@@ -1,0 +1,13 @@
+@Builder -- ras alguns métodos de construção (ex: construção de uma mensagem)
+CLasse Enum tem que colocar a annotation @Enumeratd(EnumTYpe.STRING) no caso de string ---- na coluna(atributo) da tabela(classe)
+@Column(nullable = false)para not null
+@Colmn(unique = true) campo unico, não se repete
+==== pode usar assim @Column(nullable =false, unique=true)
+@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
+- @OneToMany seria 1 para muitos
+- etch = FetchType.LAZY para questão de performace e usado para fazer um fat join 
+- cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE} para pedir os dados na hora de inserir, atualizar e remover
+
+@requestBody - requisição de dados no método post(salvar)
+
+
