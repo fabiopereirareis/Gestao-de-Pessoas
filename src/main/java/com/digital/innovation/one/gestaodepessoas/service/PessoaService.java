@@ -17,11 +17,11 @@ public class PessoaService {
         this.pessoaRepository = pessoaRepository;
     }
 
-    public MessageResponseDTO createPessoa(PessoaDTO pessoaDTO){
-        PessoaDTO savedPessoa = pessoaRepository.save(pessoaDTO);
-        return MessageResponseDTO
-                .builder()
-                .message("Pessoa criada com id " + savedPessoa.getId())
-                .build();
-    }
+//    public MessageResponseDTO createPessoa(PessoaDTO pessoaDTO){
+//        PessoaDTO savedPessoa = pessoaRepository.save(pessoaDTO);
+//        return MessageResponseDTO
+//                .builder()
+//                .message("Pessoa criada com id " + savedPessoa.getId())
+//                .build();
+//    }
 }

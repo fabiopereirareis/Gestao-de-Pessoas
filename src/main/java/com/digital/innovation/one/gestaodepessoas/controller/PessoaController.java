@@ -20,9 +20,9 @@ public class PessoaController {
         this.pessoaService = pessoaService;
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createPessoa(@RequestBody @Valid PessoaDTO pessoaDTO){
-       return pessoaService.createPessoa(pessoaDTO);
-    }
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public MessageResponseDTO createPessoa(@RequestBody @Valid PessoaDTO pessoaDTO){
+//       return pessoaService.createPessoa(pessoaDTO);
+//    }
 }
