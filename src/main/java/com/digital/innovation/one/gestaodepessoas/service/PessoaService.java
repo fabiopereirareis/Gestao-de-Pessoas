@@ -42,6 +42,7 @@ public class PessoaService {
                 .map(pessoaMapper::toDTO)
                 .collect(Collectors.toList());
     }
+//    ================= método get de vários modelos ==================
 //     método normal funcionando
 //@ResponseStatus(HttpStatus.NOT_FOUND)
 //public PessoaDTO findById(Long id) throws PessoaNaoEncontradaException {
@@ -51,11 +52,31 @@ public class PessoaService {
 //    }
 //    return pessoaMapper.toDTO(optionalPessoa.get());
 //}
-    // método com lambda
+//    // método com lambda
+//    @ResponseStatus(HttpStatus.NOT_FOUND)
+//    public PessoaDTO findById(Long id) throws PessoaNaoEncontradaException {
+//        Pessoa pessoa =  pessoaRepository.findById(id)
+//                .orElseThrow(() -> new PessoaNaoEncontradaException(id));
+//        return pessoaMapper.toDTO(pessoa);
+//    }
+// método usando o método de verificação do id
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public PessoaDTO findById(Long id) throws PessoaNaoEncontradaException {
-        Pessoa pessoa =  pessoaRepository.findById(id)
+    Pessoa pessoa = verifyIfExists(id);
+    return pessoaMapper.toDTO(pessoa);
+}
+//    ================= fim===========================
+
+
+
+    // método criado para encontrar pessoas sem ter que reescrever o mesmo códio para outros métodos
+    private Pessoa verifyIfExists(Long id) throws PessoaNaoEncontradaException{
+        return pessoaRepository.findById(id)
                 .orElseThrow(() -> new PessoaNaoEncontradaException(id));
-        return pessoaMapper.toDTO(pessoa);
+    }
+
+    public void deleteById(Long id) throws PessoaNaoEncontradaException {
+        pessoaRepository.deleteById(id);
+
     }
 }
