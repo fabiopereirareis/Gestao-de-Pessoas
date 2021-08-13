@@ -29,7 +29,7 @@ public class PessoaController {
     }
 
     @GetMapping
-    public List<Pessoa> getAllPessoas(){
+    public List<PessoaDTO> getAllPessoas(){
         return pessoaService.getAllPessoas();
     }
 }

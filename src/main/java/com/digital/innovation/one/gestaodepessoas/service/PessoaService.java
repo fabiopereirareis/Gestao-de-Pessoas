@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PessoaService {
@@ -31,7 +32,10 @@ public class PessoaService {
                 .message("Pessoa criada com id " + savedPessoa.getId())
                 .build();
     }
-    public List<Pessoa> getAllPessoas(){
-        return pessoaRepository.findAll();
+    public List<PessoaDTO> getAllPessoas(){
+        List<Pessoa> listAllPessoas = pessoaRepository.findAll();
+        return listAllPessoas.stream()
+                .map(pessoaMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }
