@@ -8,7 +8,7 @@ public class GestaodepessoasApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GestaodepessoasApplication.class, args);
-		System.out.println("Hello Word!");
+		System.out.println("Hello Word 4!");
 	}
 
 }

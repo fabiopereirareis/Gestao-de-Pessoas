@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v0/pessoa")
 public class PessoaController {
@@ -22,5 +24,10 @@ public class PessoaController {
     @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO createPessoa(@RequestBody Pessoa pessoa){
        return pessoaService.createPessoa(pessoa);
+    }
+
+    @GetMapping
+    public List<Pessoa> getAllPessoas(){
+        return pessoaService.getAllPessoas();
     }
 }

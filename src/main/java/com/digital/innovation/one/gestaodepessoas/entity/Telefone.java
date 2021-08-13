@@ -16,10 +16,11 @@ public class Telefone {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+//    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private TipoTelefone tipoTelefone;
 
-    @Column(nullable = false)
+    //    @Column(nullable = false)
     private String numero;
 }
