@@ -30,7 +30,7 @@ public class PessoaDTO {
     private String sobrenome;
 
     @NotEmpty
-    @CPF
+//    @CPF
     private String cpf;
 
     private String dataNascimento;

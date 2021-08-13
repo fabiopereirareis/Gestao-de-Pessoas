@@ -3,6 +3,7 @@ package com.digital.innovation.one.gestaodepessoas.controller;
 import com.digital.innovation.one.gestaodepessoas.dto.MessageResponseDTO;
 import com.digital.innovation.one.gestaodepessoas.dto.request.PessoaDTO;
 import com.digital.innovation.one.gestaodepessoas.entity.Pessoa;
+import com.digital.innovation.one.gestaodepessoas.exception.PessoaNaoEncontradaException;
 import com.digital.innovation.one.gestaodepessoas.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,5 +32,10 @@ public class PessoaController {
     @GetMapping
     public List<PessoaDTO> getAllPessoas(){
         return pessoaService.getAllPessoas();
+    }
+
+    @GetMapping("/{id}")
+    public PessoaDTO findPessoaDTO(@PathVariable Long id) throws PessoaNaoEncontradaException {
+        return pessoaService.findById(id);
     }
 }
