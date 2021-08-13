@@ -17,10 +17,10 @@ public class Telefone {
     private Long id;
 
 
-//    @Column(nullable = false)
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoTelefone tipoTelefone;
 
-    //    @Column(nullable = false)
+    @Column(nullable = false)
     private String numero;
 }

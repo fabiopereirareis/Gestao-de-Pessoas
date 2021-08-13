@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Pessoa {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,7 +29,7 @@ public class Pessoa {
     @Column(nullable = false, unique = true)
     private String cpf;
 
-    private LocalDate data;
+    private LocalDate dataNascimento;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
     private List<Telefone> telefones;
