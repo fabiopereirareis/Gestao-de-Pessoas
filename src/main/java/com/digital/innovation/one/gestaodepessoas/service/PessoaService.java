@@ -9,11 +9,9 @@ import com.digital.innovation.one.gestaodepessoas.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,10 +29,7 @@ public class PessoaService {
     public MessageResponseDTO createPessoa(PessoaDTO pessoaDTO){
         Pessoa conversaoPessoa = pessoaMapper.toModel(pessoaDTO);
         Pessoa savedPessoa = pessoaRepository.save(conversaoPessoa);
-        return MessageResponseDTO
-                .builder()
-                .message("Pessoa criada com id " + savedPessoa.getId())
-                .build();
+        return metodoMessageMelhorado(savedPessoa.getId(), "Pessoa criada com id ");
     }
     public List<PessoaDTO> getAllPessoas(){
         List<Pessoa> listAllPessoas = pessoaRepository.findAll();
@@ -69,14 +64,55 @@ public class PessoaService {
 
 
 
+    public void deleteById(Long id) throws PessoaNaoEncontradaException {
+        pessoaRepository.deleteById(id);
+
+    }
+// ================== método update varios maodelos ==================
+    // método normal já funcionando
+    // separaçaõ do message pois já repetia na criação de uma pessoa
+    // clicar com o botão direito com o método selecionado e refactor/extract metod
+// 1   public MessageResponseDTO updatePessoa(Long id, PessoaDTO pessoaDTO) throws PessoaNaoEncontradaException {
+//        verifyIfExists(id);
+//        Pessoa conversaoPessoa = pessoaMapper.toModel(pessoaDTO);
+//        Pessoa updatePessoa = pessoaRepository.save(conversaoPessoa);
+//        return MessageResponseDTO
+//                .builder()
+//                .message("Pessoa atualizada com id " + updatePessoa.getId())
+//                .build();
+//    }
+
+//  2  public MessageResponseDTO updatePessoa(Long id, PessoaDTO pessoaDTO) throws PessoaNaoEncontradaException {
+//        verifyIfExists(id);
+//        Pessoa conversaoPessoa = pessoaMapper.toModel(pessoaDTO);
+//        Pessoa updatePessoa = pessoaRepository.save(conversaoPessoa);
+//        return metodoMessageMelhorado(updatePessoa, "Pessoa atualizada com id ");
+//    }
+
+    public MessageResponseDTO updatePessoa(Long id, PessoaDTO pessoaDTO) throws PessoaNaoEncontradaException {
+        verifyIfExists(id);
+        Pessoa conversaoPessoa = pessoaMapper.toModel(pessoaDTO);
+        Pessoa updatePessoa = pessoaRepository.save(conversaoPessoa);
+        return metodoMessageMelhorado(updatePessoa.getId(), "Pessoa atualizada com id ");
+    }
+
+//  2  private MessageResponseDTO metodoMessageMelhorado(Pessoa updatePessoa, String s) {
+//        return MessageResponseDTO
+//                .builder()
+//                .message(s + updatePessoa.getId())
+//                .build();
+//    }
+    private MessageResponseDTO metodoMessageMelhorado(Long id, String message) {
+        return MessageResponseDTO
+                .builder()
+                .message(message + id)
+                .build();
+    }
+
     // método criado para encontrar pessoas sem ter que reescrever o mesmo códio para outros métodos
     private Pessoa verifyIfExists(Long id) throws PessoaNaoEncontradaException{
         return pessoaRepository.findById(id)
                 .orElseThrow(() -> new PessoaNaoEncontradaException(id));
     }
 
-    public void deleteById(Long id) throws PessoaNaoEncontradaException {
-        pessoaRepository.deleteById(id);
-
-    }
 }

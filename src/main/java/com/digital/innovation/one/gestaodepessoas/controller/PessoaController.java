@@ -44,4 +44,9 @@ public class PessoaController {
     public void deletePessoa(@PathVariable Long id) throws PessoaNaoEncontradaException {
         pessoaService.deleteById(id);
     }
+
+    @PutMapping("{id}")
+    public MessageResponseDTO updatePessoa(@PathVariable Long id, @RequestBody PessoaDTO pessoaDTO) throws PessoaNaoEncontradaException {
+        return pessoaService.updatePessoa(id,pessoaDTO);
+    }
 }
