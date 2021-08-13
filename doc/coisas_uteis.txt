@@ -29,3 +29,8 @@ implementação para validar CPF
 // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
 implementation group: 'org.hibernate', name: 'hibernate-validator', version: '7.0.1.Final'
 
+implementação map struct
+        implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+ 
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+
