@@ -10,4 +10,22 @@ CLasse Enum tem que colocar a annotation @Enumeratd(EnumTYpe.STRING) no caso de 
 
 @requestBody - requisição de dados no método post(salvar)
 
+{
+	"nome":" ",
+	"sobrenome":" ",
+	"cpf":" ",
+	"telefone":[
+			{
+			"tipotelefone":"celular"
+			"numero":"(11)99999999
+			}
+		]
+}
+implementação para validar campos
+// https://mvnrepository.com/artifact/javax.validation/validation-api
+implementation group: 'javax.validation', name: 'validation-api', version: '2.0.0.Final'
+
+implementação para validar CPF
+// https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+implementation group: 'org.hibernate', name: 'hibernate-validator', version: '7.0.1.Final'
 
