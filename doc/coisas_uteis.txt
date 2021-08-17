@@ -34,3 +34,6 @@ implementação map struct
  
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 
+para subir heroko
+criar arquivo system.properties na raiz do projeto
+ incluir linha java.runtime.version=11 no caso java 11
