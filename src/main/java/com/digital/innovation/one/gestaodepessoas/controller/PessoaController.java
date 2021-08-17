@@ -16,6 +16,11 @@ import java.util.List;
 @RequestMapping("/api/v0/pessoa")
 public class PessoaController {
 
+    @GetMapping
+    public String getBook(){
+        return "Aplicação ok";
+    }
+
     private PessoaService pessoaService;
 
     @Autowired
@@ -23,13 +28,15 @@ public class PessoaController {
         this.pessoaService = pessoaService;
     }
 
+
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO createPessoa(@RequestBody @Valid PessoaDTO pessoaDTO){
        return pessoaService.createPessoa(pessoaDTO);
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<PessoaDTO> getAllPessoas(){
         return pessoaService.getAllPessoas();
     }
