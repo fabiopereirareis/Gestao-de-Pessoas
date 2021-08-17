@@ -41,18 +41,18 @@ public class PessoaController {
         return pessoaService.getAllPessoas();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/listarid/{id}")
     public PessoaDTO findPessoaDTO(@PathVariable Long id) throws PessoaNaoEncontradaException {
         return pessoaService.findById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/apagarid/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePessoa(@PathVariable Long id) throws PessoaNaoEncontradaException {
         pessoaService.deleteById(id);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/atualizarid/{id}")
     public MessageResponseDTO updatePessoa(@PathVariable Long id, @RequestBody PessoaDTO pessoaDTO) throws PessoaNaoEncontradaException {
         return pessoaService.updatePessoa(id,pessoaDTO);
     }
