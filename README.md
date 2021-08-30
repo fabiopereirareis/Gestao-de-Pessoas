@@ -11,7 +11,7 @@ Passo a passo do desenvolvimento do projeto:
 - Desenvolvimento de operações de gerenciamento de usuários (Cadastro, leitura, atualização e remoção de pessoas de um sistema).
 - Relação de cada uma das operações acima com o padrão arquitetural  REST
 - Desenvolvimento de testes unitários para validação das funcionalidades
-- Implantação do sistema na nuvem através do Heroku(em andamento)
+- Implantação do sistema na nuvem através do Heroku
 
 Para executar o projeto no terminal, siga os passos abaixo:
 Navegue até a pasta gestaodepessoas/build/libs
@@ -26,6 +26,14 @@ Após executar o comando acima, basta apenas abrir o seguinte endereço e visual
 ```
 http://localhost:8080/api/v0/pessoa
 ```
+
+Documentação de uso básico da aplicação pode ser visualizada no endereço:
+
+`http://localhost:8080/swagger-ui/index.html`
+
+Endereço da aplicação na web:
+
+https://gestao-de-pessoas.herokuapp.com/api/v0/pessoa
 
 Ferramentas usadas no desenvolvimento do projeto::
 
